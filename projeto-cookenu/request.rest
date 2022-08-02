@@ -1,0 +1,40 @@
+### Cadastro de usuario
+POST  http://localhost:3003/signup
+Content-Type: application/json
+
+{
+    "name": "Diego Lima",
+    "email":"eduardo@email.com",
+    "password":"123456"
+}
+
+### Login do usuário
+# @name login
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email":"eduardo@email.com",
+    "password":"123456"
+}
+
+### Pegar próprio perfil
+
+GET http://localhost:3003/user/profile
+Authorization: {{login.response.body.token}}
+
+
+###Pegar perfil de outro usuário
+GET http://localhost:3003/user/e32e84bf-6092-4b71-8f82-1dc1ccf8ec3c
+Authorization: {{login.response.body.token}}
+
+###
+POST http://localhost:3003/user/follow
+Authorization: {{login.response.body.token}}
+Content-Type: application/json
+
+{
+    "idSeguido":"e32e84bf-6092-4b71-8f82-1dc1ccf8ec3c"
+}
+
+
